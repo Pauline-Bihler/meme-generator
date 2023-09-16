@@ -178,6 +178,7 @@ export default function App() {
         <div className="download">
           <button onClick={saveMemeImage}>Download</button>
         </div>
+
         <br />
       </div>
     </main>
