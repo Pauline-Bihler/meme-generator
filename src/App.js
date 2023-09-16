@@ -31,6 +31,7 @@ export default function App() {
   const generateNewMeme = () => {
     if (selectedTemplate && topText && bottomText) {
       const memeUrl = `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
+      console.log('Generated Meme URL:', memeUrl);
       setMemeImageUrl(memeUrl);
     }
   };
@@ -55,6 +56,14 @@ export default function App() {
     }
   }, [templates]);
 
+  // Update memeImageUrl when topText or bottomText changes
+  useEffect(() => {
+    if (selectedTemplate && topText && bottomText) {
+      const memeUrl = `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
+      setMemeImageUrl(memeUrl);
+    }
+  }, [selectedTemplate, topText, bottomText]);
+
   return (
     <main>
       <br />
@@ -74,9 +83,9 @@ export default function App() {
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Choose a Meme Template */}
           <div className="template-preview">
-            <label htmlFor="meme-template-select">Meme Template:</label>
+            <label htmlFor="memeTemplate">Meme Template</label>
             <select
-              id="meme-template-select"
+              id="memeTemplate"
               onChange={(event) => updateMemeTemplate(event.target.value)}
               value={selectedTemplate}
             >
