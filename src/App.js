@@ -93,6 +93,7 @@ export default function App() {
                   src={templateImageUrl}
                   alt="Selected Template"
                   style={{ maxWidth: '300px', maxHeight: '300px' }}
+                  data-test-id="meme-image"
                 />
               </div>
             ) : null}
