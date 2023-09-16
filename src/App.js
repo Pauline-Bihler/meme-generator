@@ -2,22 +2,22 @@ import './styles.css';
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const [topText, setTopText] = useState(''); // Top text input field
-  const [bottomText, setBottomText] = useState(''); // Bottom text input field
-  const [templates, setTemplates] = useState([]); // Store meme templates
-  const [selectedTemplate, setSelectedTemplate] = useState(''); // Store selected template
-  const [memeImageUrl, setMemeImageUrl] = useState(''); // Store generated meme image URL
-  const [templateImageUrl, setTemplateImageUrl] = useState(''); // Store selected template image URL
+  const [topText, setTopText] = useState('');
+  const [bottomText, setBottomText] = useState('');
+  const [templates, setTemplates] = useState([]);
+  const [selectedTemplate, setSelectedTemplate] = useState('');
+  const [memeImageUrl, setMemeImageUrl] = useState('');
+  const [templateImageUrl, setTemplateImageUrl] = useState('');
 
   // Fetch the data
   useEffect(() => {
     fetch('https://api.memegen.link/templates/')
       .then((response) => response.json())
-      .then((data) =>
+      .then((data) => {
         setTemplates(
           data.map((item) => item.blank.split('.png')[0].split('/')[4]),
-        ),
-      )
+        );
+      })
       .catch((error) => console.error('Error:', error));
   }, []);
 
@@ -38,16 +38,22 @@ export default function App() {
   // Function to handle the download when the "Download" button is clicked
   const handleDownload = () => {
     if (memeImageUrl) {
-      // Create a hidden anchor element
       const a = document.createElement('a');
-      a.href = memeImageUrl; // Set the image URL as the href
-      a.download = 'meme.png'; // Specify the desired filename for the downloaded image
-      a.style.display = 'none'; // Make the anchor element hidden
-      document.body.appendChild(a); // Append the anchor element to the document body
-      a.click(); // Trigger a click event on the anchor element
-      document.body.removeChild(a); // Remove the anchor element from the document body once the download is initiated
+      a.href = memeImageUrl;
+      a.download = 'meme.png';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   };
+
+  useEffect(() => {
+    // Set an initial template for the preview image when the templates are fetched
+    if (templates.length > 0) {
+      updateMemeTemplate(templates[0]);
+    }
+  }, [templates]);
 
   return (
     <main>
@@ -72,10 +78,10 @@ export default function App() {
             <select
               id="meme-template-select"
               onChange={(event) => updateMemeTemplate(event.target.value)}
+              value={selectedTemplate}
             >
-              <option value="">Select a Template</option>
               {templates.map((template) => (
-                <option key={`template-${template}.id`} value={template}>
+                <option key={`user-${template.id}`} value={template}>
                   {template}
                 </option>
               ))}
@@ -119,7 +125,9 @@ export default function App() {
           <br />
           <br />
           <br />
-          <button onClick={generateNewMeme}>Generate Meme</button>
+          <button data-test-id="generate-meme" onClick={generateNewMeme}>
+            Generate Meme
+          </button>
         </form>
         {/* Display Generated Meme */}
         {memeImageUrl ? (
