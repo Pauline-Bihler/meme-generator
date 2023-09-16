@@ -1,5 +1,5 @@
 import './styles.css';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function App() {
   const [topText, setTopText] = useState('');
@@ -28,7 +28,7 @@ export default function App() {
   };
 
   // Function to generate the meme by clicking the 'Generate Meme' button
-  const generateNewMeme = () => {
+  const generateNewMeme = useCallback(() => {
     if (selectedTemplate) {
       let memeUrl = `https://api.memegen.link/images/${selectedTemplate}`;
 
@@ -47,7 +47,7 @@ export default function App() {
       console.log('Generated Meme URL:', memeUrl);
       setMemeImageUrl(memeUrl);
     }
-  };
+  }, [selectedTemplate, topText, bottomText]);
 
   // Function to handle the download when the "Download" button is clicked
   const handleDownload = () => {
@@ -68,6 +68,16 @@ export default function App() {
       updateMemeTemplate(templates[0]);
     }
   }, [templates]);
+
+  // Update memeImageUrl when topText changes
+  useEffect(() => {
+    generateNewMeme();
+  }, [generateNewMeme]);
+
+  // Update memeImageUrl when bottomText changes
+  useEffect(() => {
+    generateNewMeme();
+  }, [generateNewMeme]);
 
   return (
     <main>
