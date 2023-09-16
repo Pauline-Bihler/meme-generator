@@ -104,8 +104,8 @@ export default function App() {
         <br />
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Add Text */}
-          <label>
-            <div htmlFor="Top text">Top text</div>
+          <label htmlFor="Top text">
+            <div>Top text</div>
             <input
               value={topText}
               name="Top text"
