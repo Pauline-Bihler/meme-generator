@@ -105,9 +105,10 @@ export default function App() {
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Add Text */}
           <label>
-            <div>Top Text </div>
+            <div htmlFor="Top Text">Top Text</div>
             <input
               value={topText}
+              name="Top Text"
               onChange={(event) => setTopText(event.target.value)}
             />
           </label>
@@ -115,10 +116,11 @@ export default function App() {
           <br />
           <br />
           <br />
-          <label>
-            <div>Bottom Text </div>
+          <label htmlFor="Bottom Text">
+            <div>Bottom Text</div>
             <input
               value={bottomText}
+              name="Top Text"
               onChange={(event) => setBottomText(event.target.value)}
             />
           </label>
