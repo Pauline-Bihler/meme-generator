@@ -27,6 +27,26 @@ export default function App() {
     setTemplateImageUrl(`https://api.memegen.link/images/${template}.png`);
   };
 
+  // Function to generate the meme by clicking the 'Generate Meme' button
+  const generateNewMeme = () => {
+    if (selectedTemplate) {
+      let memeUrl = `https://api.memegen.link/images/${selectedTemplate}`;
+
+      if (topText) {
+        memeUrl += `/${encodeURIComponent(topText)}`;
+      }
+
+      if (bottomText) {
+        memeUrl += `/${encodeURIComponent(bottomText)}`;
+      }
+
+      memeUrl += '.png';
+
+      console.log('Generated Meme URL:', memeUrl);
+      setMemeImageUrl(memeUrl);
+    }
+  };
+
   // Function to handle the download when the "Download" button is clicked
   const handleDownload = () => {
     if (memeImageUrl) {
@@ -46,51 +66,6 @@ export default function App() {
       updateMemeTemplate(templates[0]);
     }
   }, [templates]);
-
-  // Function to generate the meme URL
-  const generateMemeUrl = () => {
-    if (selectedTemplate && topText && bottomText) {
-      return `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
-    }
-    return ''; // Return an empty string if any required data is missing
-  };
-
-  // Function to update the meme image URL
-  const updateMemeImageUrl = () => {
-    const memeUrl = generateMemeUrl();
-    setMemeImageUrl(memeUrl);
-  };
-
-  // Call the updateMemeImageUrl function when the component mounts or when selectedTemplate, topText, or bottomText change
-  useEffect(() => {
-    updateMemeImageUrl();
-  }, [selectedTemplate, topText, bottomText]);
-
-  // Function to generate the meme by clicking the 'Generate Meme' button
-  const generateNewMeme = () => {
-    // Generate the meme URL
-    const memeUrl = generateMemeUrl();
-    console.log('Generated Meme URL:', memeUrl);
-    // Update the meme image URL
-    setMemeImageUrl(memeUrl);
-  };
-
-  // // Function to generate the meme by clicking the 'Generate Meme' button
-  // const generateNewMeme = () => {
-  //   if (selectedTemplate && topText && bottomText) {
-  //     const memeUrl = `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
-  //     console.log('Generated Meme URL:', memeUrl);
-  //     setMemeImageUrl(memeUrl);
-  //   }
-  // };
-
-  // // Update memeImageUrl when topText or bottomText changes
-  // useEffect(() => {
-  //   if (selectedTemplate && topText && bottomText) {
-  //     const memeUrl = `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
-  //     setMemeImageUrl(memeUrl);
-  //   }
-  // }, [selectedTemplate, topText, bottomText]);
 
   return (
     <main>
@@ -542,3 +517,21 @@ export default function App() {
 //     </main>
 //   );
 // }
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// // Function to generate the meme by clicking the 'Generate Meme' button
+// const generateNewMeme = () => {
+//   if (selectedTemplate && topText && bottomText) {
+//     const memeUrl = `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
+//     console.log('Generated Meme URL:', memeUrl);
+//     setMemeImageUrl(memeUrl);
+//   }
+// };
+
+// // Update memeImageUrl when topText or bottomText changes
+// useEffect(() => {
+//   if (selectedTemplate && topText && bottomText) {
+//     const memeUrl = `https://api.memegen.link/images/${selectedTemplate}/${topText}/${bottomText}.png`;
+//     setMemeImageUrl(memeUrl);
+//   }
+// }, [selectedTemplate, topText, bottomText]);
