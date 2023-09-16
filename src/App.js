@@ -104,26 +104,22 @@ export default function App() {
         <br />
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Add Text */}
-          <label htmlFor="Top text">
-            <div>Top text</div>
-            <input
-              value={topText}
-              name="Top text"
-              onChange={(event) => setTopText(event.target.value)}
-            />
-          </label>
+          <label htmlFor="topText">Top text</label>
+          <input
+            value={topText}
+            id="topText"
+            onChange={(event) => setTopText(event.target.value)}
+          />
           <br />
           <br />
           <br />
           <br />
-          <label htmlFor="Bottom text">
-            <div>Bottom text</div>
-            <input
-              value={bottomText}
-              name="Bottom text"
-              onChange={(event) => setBottomText(event.target.value)}
-            />
-          </label>
+          <label htmlFor="bottomText">Bottom text</label>
+          <input
+            value={bottomText}
+            id="bottomText"
+            onChange={(event) => setBottomText(event.target.value)}
+          />
           <br />
           <br />
           <br />
