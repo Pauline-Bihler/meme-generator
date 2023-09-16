@@ -9,7 +9,6 @@ export default function App() {
   const [selectedTemplate, setSelectedTemplate] = useState('');
   const [memeImageUrl, setMemeImageUrl] = useState('');
   const [templateImageUrl, setTemplateImageUrl] = useState('');
-  const labelElement = screen.getByTestId('memeTemplateLabel');
 
   // Fetch the data
   useEffect(() => {
