@@ -1,4 +1,5 @@
 import './styles.css';
+import { saveAs } from 'file-saver';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function App() {
@@ -50,17 +51,24 @@ export default function App() {
   }, [selectedTemplate, topText, bottomText]);
 
   // Function to handle the download when the "Download" button is clicked
-  const handleDownload = () => {
+  // const handleDownload = () => {
+  //   if (memeImageUrl) {
+  //     const a = document.createElement('a');
+  //     a.href = memeImageUrl;
+  //     a.download = 'meme.png';
+  //     a.style.display = 'none';
+  //     document.body.appendChild(a);
+  //     a.click();
+  //     document.body.removeChild(a);
+  //   }
+  // };
+
+  function saveMemeImage() {
     if (memeImageUrl) {
-      const a = document.createElement('a');
-      a.href = memeImageUrl;
-      a.download = 'meme.png';
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      // Use the saveAs function to save the meme image
+      saveAs(memeImageUrl, 'meme.png');
     }
-  };
+  }
 
   useEffect(() => {
     // Set an initial template for the preview image when the templates are fetched
@@ -74,10 +82,10 @@ export default function App() {
     generateNewMeme();
   }, [generateNewMeme]);
 
-  // Update memeImageUrl when bottomText changes
+  // Update memeImageUrl when topText or bottomText changes
   useEffect(() => {
     generateNewMeme();
-  }, [generateNewMeme]);
+  }, [generateNewMeme, topText, bottomText]);
 
   return (
     <main>
@@ -168,7 +176,7 @@ export default function App() {
         <br />
         <br />
         <div className="download">
-          <button onClick={handleDownload}>Download</button>
+          <button onClick={saveMemeImage}>Download</button>
         </div>
         <br />
       </div>
