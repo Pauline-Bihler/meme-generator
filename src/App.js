@@ -28,7 +28,7 @@ export default function App() {
     setTemplateImageUrl(`https://api.memegen.link/images/${template}.png`);
   };
 
-  // Function to generate the meme by clicking the 'Generate Meme' button
+  // Function to generate the meme
   const generateNewMeme = useCallback(() => {
     if (selectedTemplate) {
       let memeUrl = `https://api.memegen.link/images/${selectedTemplate}`;
@@ -50,19 +50,7 @@ export default function App() {
     }
   }, [selectedTemplate, topText, bottomText]);
 
-  // Function to handle the download when the "Download" button is clicked
-  // const handleDownload = () => {
-  //   if (memeImageUrl) {
-  //     const a = document.createElement('a');
-  //     a.href = memeImageUrl;
-  //     a.download = 'meme.png';
-  //     a.style.display = 'none';
-  //     document.body.appendChild(a);
-  //     a.click();
-  //     document.body.removeChild(a);
-  //   }
-  // };
-
+  // Function to download the new meme
   function saveMemeImage() {
     if (memeImageUrl) {
       // Use the saveAs function to save the meme image
@@ -156,9 +144,9 @@ export default function App() {
           <br />
           <br />
           <br />
-          <button data-test-id="generate-meme" onClick={generateNewMeme}>
+          {/* <button data-test-id="generate-meme" onClick={generateNewMeme}>
             Generate Meme
-          </button>
+          </button> */}
         </form>
         {/* Display Generated Meme */}
         {memeImageUrl ? (
