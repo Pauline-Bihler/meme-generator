@@ -38,6 +38,8 @@ export default function App() {
 
       if (bottomText) {
         memeUrl += `/${encodeURIComponent(bottomText)}`;
+      } else {
+        memeUrl += '/_'; // Use underscore as a placeholder for missing bottom text
       }
 
       memeUrl += '.png';
