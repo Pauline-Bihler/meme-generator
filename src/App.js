@@ -94,18 +94,19 @@ export default function App() {
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Choose a Meme Template */}
           <div className="template-preview">
-            <label htmlFor="memeTemplate">Meme Template</label>
-            <select
-              id="memeTemplate"
-              onChange={(event) => updateMemeTemplate(event.target.value)}
-              value={selectedTemplate}
-            >
-              {templates.map((template) => (
-                <option key={`user-${template.id}`} value={template}>
-                  {template}
-                </option>
-              ))}
-            </select>
+            <label>
+              Meme Template
+              <select
+                onChange={(event) => updateMemeTemplate(event.target.value)}
+                value={selectedTemplate}
+              >
+                {templates.map((template) => (
+                  <option key={`user-${template.id}`} value={template}>
+                    {template}
+                  </option>
+                ))}
+              </select>
+            </label>
             {/* Display Template Image Preview */}
             {templateImageUrl ? (
               <div className="template-image">
