@@ -9,6 +9,7 @@ export default function App() {
   const [selectedTemplate, setSelectedTemplate] = useState('');
   const [memeImageUrl, setMemeImageUrl] = useState('');
   const [templateImageUrl, setTemplateImageUrl] = useState('');
+  const labelElement = screen.getByTestId('memeTemplateLabel');
 
   // Fetch the data
   useEffect(() => {
@@ -94,7 +95,7 @@ export default function App() {
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Choose a Meme Template */}
           <div className="template-preview">
-            <label>
+            <label htmlFor="memeTemplate" id="memeTemplateLabel">
               Meme Template
               <select
                 onChange={(event) => updateMemeTemplate(event.target.value)}
@@ -107,6 +108,20 @@ export default function App() {
                 ))}
               </select>
             </label>
+
+            {/* <label>
+              Meme Template
+              <select
+                onChange={(event) => updateMemeTemplate(event.target.value)}
+                value={selectedTemplate}
+              >
+                {templates.map((template) => (
+                  <option key={`user-${template.id}`} value={template}>
+                    {template}
+                  </option>
+                ))}
+              </select>
+            </label> */}
             {/* Display Template Image Preview */}
             {templateImageUrl ? (
               <div className="template-image">
