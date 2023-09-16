@@ -90,99 +90,86 @@ export default function App() {
       <br />
       <br />
       <br />
-      <div className="section-2">
-        <form onSubmit={(event) => event.preventDefault()}>
-          {/* Choose a Meme Template */}
-          <div className="template-preview">
-            <label htmlFor="memeTemplate" id="memeTemplateLabel">
-              Meme Template
-              <select
-                onChange={(event) => updateMemeTemplate(event.target.value)}
-                value={selectedTemplate}
-              >
-                {templates.map((template) => (
-                  <option key={`user-${template.id}`} value={template}>
-                    {template}
-                  </option>
-                ))}
-              </select>
-            </label>
 
-            {/* <label>
-              Meme Template
-              <select
-                onChange={(event) => updateMemeTemplate(event.target.value)}
-                value={selectedTemplate}
-              >
-                {templates.map((template) => (
-                  <option key={`user-${template.id}`} value={template}>
-                    {template}
-                  </option>
-                ))}
-              </select>
-            </label> */}
-            {/* Display Template Image Preview */}
-            {templateImageUrl ? (
-              <div className="template-image">
-                <img
-                  src={templateImageUrl}
-                  alt="Selected Template"
-                  style={{ maxWidth: '300px', maxHeight: '300px' }}
-                />
-              </div>
-            ) : null}
-          </div>
-        </form>
+      <br />
+      <br />
+      <br />
+      <form onSubmit={(event) => event.preventDefault()}>
+        {/* Add Text */}
+        <label htmlFor="topText">Top text</label>
+        <input
+          value={topText}
+          id="topText"
+          onChange={(event) => setTopText(event.target.value)}
+        />
         <br />
         <br />
         <br />
-        <form onSubmit={(event) => event.preventDefault()}>
-          {/* Add Text */}
-          <label htmlFor="topText">Top text</label>
-          <input
-            value={topText}
-            id="topText"
-            onChange={(event) => setTopText(event.target.value)}
-          />
-          <br />
-          <br />
-          <br />
-          <br />
-          <label htmlFor="bottomText">Bottom text</label>
-          <input
-            value={bottomText}
-            id="bottomText"
-            onChange={(event) => setBottomText(event.target.value)}
-          />
-          <br />
-          <br />
-          <br />
-          <br />
-          {/* <button data-test-id="generate-meme" onClick={generateNewMeme}>
+        <br />
+        <label htmlFor="bottomText">Bottom text</label>
+        <input
+          value={bottomText}
+          id="bottomText"
+          onChange={(event) => setBottomText(event.target.value)}
+        />
+        <br />
+        <br />
+        <div className="section-2">
+          <form onSubmit={(event) => event.preventDefault()}>
+            {/* Choose a Meme Template */}
+            <div className="template-preview">
+              <label>
+                Meme Template
+                <select
+                  onChange={(event) => updateMemeTemplate(event.target.value)}
+                  value={selectedTemplate}
+                >
+                  {templates.map((template) => (
+                    <option key={`user-${template.id}`} value={template}>
+                      {template}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {/* Display Template Image Preview */}
+              {templateImageUrl ? (
+                <div className="template-image">
+                  <img
+                    src={templateImageUrl}
+                    alt="Selected Template"
+                    style={{ maxWidth: '300px', maxHeight: '300px' }}
+                  />
+                </div>
+              ) : null}
+            </div>
+          </form>
+        </div>
+        <br />
+        <br />
+        {/* <button data-test-id="generate-meme" onClick={generateNewMeme}>
             Generate Meme
           </button> */}
-        </form>
-        {/* Display Generated Meme */}
-        {memeImageUrl ? (
-          <div>
-            <h2>Generated Meme</h2>
-            <img
-              src={memeImageUrl}
-              alt="Generated Meme"
-              data-test-id="meme-image"
-              style={{ maxWidth: '300px', maxHeight: '300px' }}
-            />
-          </div>
-        ) : null}
-        <br />
-        <br />
-        <br />
-        <div className="download">
-          <button onClick={saveMemeImage}>Download</button>
+      </form>
+      {/* Display Generated Meme */}
+      {memeImageUrl ? (
+        <div>
+          <h2>Generated Meme</h2>
+          <img
+            src={memeImageUrl}
+            alt="Generated Meme"
+            data-test-id="meme-image"
+            style={{ maxWidth: '300px', maxHeight: '300px' }}
+          />
         </div>
-
-        <br />
+      ) : null}
+      <br />
+      <br />
+      <br />
+      <div className="download">
+        <button onClick={saveMemeImage}>Download</button>
       </div>
+
+      <br />
     </main>
   );
 }
