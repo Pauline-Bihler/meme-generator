@@ -128,8 +128,8 @@ export default function App() {
             <img
               src={memeImageUrl}
               alt="Generated Meme"
-              style={{ maxWidth: '300px', maxHeight: '300px' }}
               data-test-id="meme-image"
+              style={{ maxWidth: '300px', maxHeight: '300px' }}
             />
           </div>
         ) : null}
