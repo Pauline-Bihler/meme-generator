@@ -29,7 +29,13 @@ Resources used:
 
 - https://www.guvi.in/blog/how-to-fetch-data-using-api-in-react/
 - https://dmitripavlutin.com/react-useeffect-explanation/
+- https://maxrozen.com/fetching-data-react-with-useeffect
 
 - Drop down option to show the meme templates(Select Element, Change event):
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+- https://developer.mozilla.org/en-US/docs/Web/API/Event
+
+-
+- https://legacy.reactjs.org/docs/forms.html
+- https://legacy.reactjs.org/docs/handling-events.html
