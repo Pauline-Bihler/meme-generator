@@ -105,7 +105,7 @@ export default function App() {
         <form onSubmit={(event) => event.preventDefault()}>
           {/* Add Text */}
           <label>
-            <div>Top Text: </div>
+            <div>Top Text </div>
             <input
               value={topText}
               onChange={(event) => setTopText(event.target.value)}
@@ -116,7 +116,7 @@ export default function App() {
           <br />
           <br />
           <label>
-            <div>Bottom Text: </div>
+            <div>Bottom Text </div>
             <input
               value={bottomText}
               onChange={(event) => setBottomText(event.target.value)}
