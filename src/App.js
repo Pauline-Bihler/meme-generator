@@ -8,7 +8,7 @@ export default function App() {
   const [templates, setTemplates] = useState([]);
   const [selectedTemplate, setSelectedTemplate] = useState('');
   const [memeImageUrl, setMemeImageUrl] = useState('');
-  const [templateImageUrl, setTemplateImageUrl] = useState('');
+  // const [templateImageUrl, setTemplateImageUrl] = useState('');
 
   // Fetch the data
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function App() {
   // Function to update the meme template and the preview image
   const updateMemeTemplate = (template) => {
     setSelectedTemplate(template);
-    setTemplateImageUrl(`https://api.memegen.link/images/${template}.png`);
+    setMemeImageUrl(`https://api.memegen.link/images/${template}.png`);
   };
 
   // Function to generate the meme
