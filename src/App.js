@@ -127,6 +127,7 @@ export default function App() {
             <img
               src={templateImageUrl}
               alt="Template Preview"
+              data-test-id="meme-image"
               style={{ maxWidth: '300px', maxHeight: '300px' }}
             />
           </div>
