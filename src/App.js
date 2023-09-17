@@ -121,12 +121,12 @@ export default function App() {
           </select>
         </label>
         {/* Display Template Image Preview */}
-        {templateImageUrl ? (
+        {memeImageUrl ? (
           <div>
-            {/* <h2>Template Preview</h2> */}
+            {/* <h2>Generated Meme</h2> */}
             <img
-              src={templateImageUrl}
-              alt="Template Preview"
+              src={memeImageUrl}
+              alt="Generated Meme"
               data-test-id="meme-image"
               style={{ maxWidth: '300px', maxHeight: '300px' }}
             />
