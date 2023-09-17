@@ -106,8 +106,8 @@ export default function App() {
         <br />
         <br />
         {/* <div className="section-2"> */}
-        <div className="template-preview">
-          <label htmlFor="memeTemplate">Meme Template</label>
+        <label>
+          Meme template
           <select
             id="memeTemplate"
             onChange={(event) => updateMemeTemplate(event.target.value)}
@@ -119,19 +119,19 @@ export default function App() {
               </option>
             ))}
           </select>
-          {/* Display Template Image Preview */}
-          {memeImageUrl ? (
-            <div>
-              {/* <h2>Generated Meme</h2> */}
-              <img
-                src={memeImageUrl}
-                alt="Generated Meme"
-                data-test-id="meme-image"
-                style={{ maxWidth: '300px', maxHeight: '300px' }}
-              />
-            </div>
-          ) : null}
-        </div>
+        </label>
+        {/* Display Template Image Preview */}
+        {memeImageUrl ? (
+          <div>
+            {/* <h2>Generated Meme</h2> */}
+            <img
+              src={memeImageUrl}
+              alt="Generated Meme"
+              data-test-id="meme-image"
+              style={{ maxWidth: '300px', maxHeight: '300px' }}
+            />
+          </div>
+        ) : null}
         {/* </div> */}
         <br />
         <br />
