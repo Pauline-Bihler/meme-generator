@@ -65,11 +65,6 @@ export default function App() {
     }
   }, [templates]);
 
-  // Update memeImageUrl when topText changes
-  useEffect(() => {
-    generateNewMeme();
-  }, [generateNewMeme]);
-
   // Update memeImageUrl when topText or bottomText changes
   useEffect(() => {
     generateNewMeme();
@@ -87,10 +82,6 @@ export default function App() {
         </p>
         <br />
       </div>
-      <br />
-      <br />
-      <br />
-
       <br />
       <br />
       <br />
@@ -114,47 +105,34 @@ export default function App() {
         />
         <br />
         <br />
-        <div className="section-2">
-          <form onSubmit={(event) => event.preventDefault()}>
-            {/* Choose a Meme Template */}
-            <div className="template-preview">
-              <label>
-                Meme Template
-                <select
-                  onChange={(event) => updateMemeTemplate(event.target.value)}
-                  value={selectedTemplate}
-                >
-                  {templates.map((template) => (
-                    <option key={`user-${template.id}`} value={template}>
-                      {template}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              {/* Display Template Image Preview */}
-              {memeImageUrl ? (
-                <div>
-                  <h2>Generated Meme</h2>
-                  <img
-                    src={memeImageUrl}
-                    alt="Generated Meme"
-                    data-test-id="meme-image"
-                    style={{ maxWidth: '300px', maxHeight: '300px' }}
-                  />
-                </div>
-              ) : null}
-              {/* {templateImageUrl ? (
-                <div className="template-image">
-                  <img
-                    src={templateImageUrl}
-                    alt="Selected Template"
-                    style={{ maxWidth: '300px', maxHeight: '300px' }}
-                  />
-                </div>
-              ) : null} */}
+        {/* <div className="section-2"> */}
+        <div className="template-preview">
+          <label htmlFor="memeTemplate">Meme Template</label>
+          <select
+            id="memeTemplate"
+            onChange={(event) => updateMemeTemplate(event.target.value)}
+            value={selectedTemplate}
+          >
+            {templates.map((template) => (
+              <option key={`user-${template.id}`} value={template}>
+                {template}
+              </option>
+            ))}
+          </select>
+          {/* Display Template Image Preview */}
+          {memeImageUrl ? (
+            <div>
+              {/* <h2>Generated Meme</h2> */}
+              <img
+                src={memeImageUrl}
+                alt="Generated Meme"
+                data-test-id="meme-image"
+                style={{ maxWidth: '300px', maxHeight: '300px' }}
+              />
             </div>
-          </form>
+          ) : null}
         </div>
+        {/* </div> */}
         <br />
         <br />
         {/* <button data-test-id="generate-meme" onClick={generateNewMeme}>
