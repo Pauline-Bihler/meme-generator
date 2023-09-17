@@ -21,17 +21,15 @@ body {
 
 .template-preview {
   flex-direction: column;
-  align-items: left; /* Center horizontally */
-  text-align: left; /* Center text */
+  align-items: left;
+  text-align: left;
   border-radius: 8px;
 }
 
-/* Style the image within the container */
 .template-image img {
-  /* Your styles here */
   max-width: 300px;
   max-height: 300px;
-  margin-top: 10px; /* Add some space between the label and the image */
+  margin-top: 10px;
   border-radius: 8px;
 }
 
