@@ -132,7 +132,18 @@ export default function App() {
                 </select>
               </label>
               {/* Display Template Image Preview */}
-              {templateImageUrl ? (
+              {memeImageUrl ? (
+                <div>
+                  <h2>Generated Meme</h2>
+                  <img
+                    src={memeImageUrl}
+                    alt="Generated Meme"
+                    data-test-id="meme-image"
+                    style={{ maxWidth: '300px', maxHeight: '300px' }}
+                  />
+                </div>
+              ) : null}
+              {/* {templateImageUrl ? (
                 <div className="template-image">
                   <img
                     src={templateImageUrl}
@@ -140,7 +151,7 @@ export default function App() {
                     style={{ maxWidth: '300px', maxHeight: '300px' }}
                   />
                 </div>
-              ) : null}
+              ) : null} */}
             </div>
           </form>
         </div>
@@ -151,7 +162,7 @@ export default function App() {
           </button> */}
       </form>
       {/* Display Generated Meme */}
-      {memeImageUrl ? (
+      {/* {memeImageUrl ? (
         <div>
           <h2>Generated Meme</h2>
           <img
@@ -161,7 +172,7 @@ export default function App() {
             style={{ maxWidth: '300px', maxHeight: '300px' }}
           />
         </div>
-      ) : null}
+      ) : null} */}
       <br />
       <br />
       <br />
