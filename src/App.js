@@ -123,7 +123,7 @@ export default function App() {
         {/* Display Template Image Preview */}
         {templateImageUrl ? (
           <div>
-            <h2>Template Preview</h2>
+            {/* <h2>Template Preview</h2> */}
             <img
               src={templateImageUrl}
               alt="Template Preview"
